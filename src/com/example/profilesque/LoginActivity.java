@@ -40,12 +40,14 @@ public class LoginActivity extends Activity implements OnClickListener {
  
         switch (v.getId()) {
         case R.id.button1:
+        	
+        	Toast.makeText(LoginActivity.this, "Button press recognized.", Toast.LENGTH_SHORT).show();
  
               new Thread(new Runnable() {
                     public void run() {
  
                         try {
-                            URL url = new URL("jdbc:postgresql://ec2-23-23-81-171.compute-1.amazonaws.com:5432/d3der2cpdnsd7k?user=oougodzmcwhapf&password=srdrgT5PV-VxBxlDGBPtzmFfsg");
+                            URL url = new URL("http://calm-shore-springmvc-hibernate.herokuapp.com/MobileLogin");
                             URLConnection connection = url.openConnection();
  
                             String inputStringUser = eTxtUser.getText().toString();
@@ -59,9 +61,10 @@ public class LoginActivity extends Activity implements OnClickListener {
                             OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream());
                             out.write(inputStringUser);
                             out.write(inputStringPass);
+                            
+                            Toast.makeText(LoginActivity.this, "out.write has been performed.", Toast.LENGTH_SHORT).show();
+                            
                             out.close();
- 
-                            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
  
                             } catch(Exception e)
                             {
