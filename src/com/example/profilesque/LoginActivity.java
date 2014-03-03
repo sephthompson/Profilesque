@@ -1,82 +1,94 @@
 package com.example.profilesque;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.URL;
-import java.net.URLConnection;
+import java.util.ArrayList;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 
 import com.example.profilesq.R;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class LoginActivity extends Activity implements OnClickListener {
+public class LoginActivity extends Activity {
+
+	private String resp;
+	private String errorMsg;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
+
+		final EditText textUser = (EditText) findViewById(R.id.editText1);
+		final EditText textPass = (EditText) findViewById(R.id.editText2);
+		final TextView textViewError = (TextView) findViewById(R.id.textView2);
+		textViewError.setMovementMethod(new ScrollingMovementMethod());
+		Button submitBtn = (Button) findViewById(R.id.button1);
+
+		submitBtn.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				Toast.makeText(LoginActivity.this, "Button press recognized.",
+						Toast.LENGTH_SHORT).show();
+
+				new Thread(new Runnable() {
+					public void run() {
+
+						ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
+						postParameters.add(new BasicNameValuePair("email", textUser.getText().toString()));
+						postParameters.add(new BasicNameValuePair("password", textPass.getText().toString()));
+
+						String response = null;
+
+						try {
+							response = SimpleHttpClient
+									.executeHttpPost("http://calm-shore-springmvc-hibernate.herokuapp.com/MobileLogin", postParameters);
+							String res = response.toString();
+							resp = res;//.replaceAll("\\s+", "");
+
+						} catch (Exception e) {
+							Log.d("Exception", e.toString());
+							Toast.makeText(LoginActivity.this, "DEBUG: " + e, Toast.LENGTH_SHORT).show();
+						}
+					}
+				}).start();
+
+				try {
+					// Wait a second to get response from server
+					Thread.sleep(1000);
+					// Inside the new thread we cannot update the main thread
+					// So updating the main thread outside the new thread
+
+					textViewError.setText(resp);
+
+					if (null != errorMsg && !errorMsg.isEmpty()) {
+						textViewError.setText(errorMsg);
+					}
+				} catch (Exception e) {
+					textViewError.setText(e.getMessage());
+				}
+			}
+		});
+
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
+		// setContentView(R.layout.activity_debug);
 		return true;
 	}
-	
-	@Override
-    public void onClick(View v) {
-		
-		final EditText eTxtUser = (EditText) findViewById(R.id.editText1);
-		final EditText eTxtPass = (EditText) findViewById(R.id.editText2);
- 
-        switch (v.getId()) {
-        case R.id.button1:
-        	
-        	Toast.makeText(LoginActivity.this, "Button press recognized.", Toast.LENGTH_SHORT).show();
- 
-              new Thread(new Runnable() {
-                    public void run() {
- 
-                        try {
-                            URL url = new URL("http://calm-shore-springmvc-hibernate.herokuapp.com/MobileLogin");
-                            URLConnection connection = url.openConnection();
- 
-                            String inputStringUser = eTxtUser.getText().toString();
-                            String inputStringPass = eTxtPass.getText().toString();
-                            //inputString = URLEncoder.encode(inputString, "UTF-8");
- 
-                            Log.d("inputStringUser", inputStringUser);
-                            Log.d("inputStringPass", inputStringPass);
- 
-                            connection.setDoOutput(true);
-                            OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream());
-                            out.write(inputStringUser);
-                            out.write(inputStringPass);
-                            
-                            Toast.makeText(LoginActivity.this, "out.write has been performed.", Toast.LENGTH_SHORT).show();
-                            
-                            out.close();
- 
-                            } catch(Exception e)
-                            {
-                                Log.d("Exception",e.toString());
-                                Toast.makeText(LoginActivity.this, "DEBUG: " + e, Toast.LENGTH_SHORT).show();
-                            }
- 
-                    }
-                  }).start();
- 
-            break;
-            }
-        }
 
 }

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:text="@string/login" />
     
     <EditText
@@ -24,7 +24,7 @@
         android:gravity="center"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/textfieldbg"
         android:ems="10"
         android:hint="@string/edittext1" >
@@ -39,19 +39,28 @@
         android:gravity="center"
         android:layout_below="@+id/editText1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/textfieldbg"
         android:ems="10"
         android:hint="@string/edittext2"
         android:inputType="textPassword" />
-
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="20dp"
         android:text="@string/button1" />
+    
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="400dp"
+        android:layout_height="500dp"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/textfieldbg"
+		android:scrollbars= "vertical" />
+    
 
 </RelativeLayout>
