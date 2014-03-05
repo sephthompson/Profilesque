@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.example.profilesq;
+package com.example.profilesque;
 
 public final class R {
     public static final class attr {

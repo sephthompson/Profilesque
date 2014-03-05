@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
-import com.example.profilesq.R;
+import com.example.profilesque.R;
 
 import android.os.Bundle;
 import android.app.Activity;

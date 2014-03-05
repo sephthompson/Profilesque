@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.profilesq"
+    package="com.example.profilesque"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -14,8 +14,10 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
+        <!-- INDEX -->
         <activity
-			android:name="com.example.profilesque.LoginActivity"
+			android:name="com.example.profilesque.Index"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name" >
@@ -24,6 +26,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        
+        <!-- LOGIN -->
+        <activity
+            android:name="com.example.profilesque.LoginActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name" >
         </activity>
     </application>
 
