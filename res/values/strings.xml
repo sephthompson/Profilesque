@@ -3,6 +3,9 @@
 
     <string name="app_name">Profilesque</string>
     <string name="action_settings">Settings</string>
+    <string name="notmember">Not a member, yet?</string>
+    <string name="signup">Sign Up!</string>
+    <string name="register">REGISTER</string>
     <string name="login">LOGIN</string>
     <string name="edittext1">enter username</string>
     <string name="edittext2">enter password</string>
