@@ -18,7 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LoginActivity extends Activity {
+public class Login extends Activity {
 
 	private String resp;
 	private String errorMsg;
@@ -39,7 +39,7 @@ public class LoginActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				Toast.makeText(LoginActivity.this, "Button press recognized.",
+				Toast.makeText(Login.this, "Button press recognized.",
 						Toast.LENGTH_SHORT).show();
 
 				new Thread(new Runnable() {
@@ -59,7 +59,7 @@ public class LoginActivity extends Activity {
 
 						} catch (Exception e) {
 							Log.d("Exception", e.toString());
-							Toast.makeText(LoginActivity.this, "DEBUG: " + e, Toast.LENGTH_SHORT).show();
+							Toast.makeText(Login.this, "DEBUG: " + e, Toast.LENGTH_SHORT).show();
 						}
 					}
 				}).start();

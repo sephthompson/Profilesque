@@ -25,7 +25,7 @@ public class Index extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(Index.this, LoginActivity.class);
+				Intent intent = new Intent(Index.this, Login.class);
 				startActivity(intent);
 			}
 		});
@@ -34,7 +34,7 @@ public class Index extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(Index.this, LoginActivity.class);
+				Intent intent = new Intent(Index.this, Login.class);
 				startActivity(intent);
 			}
 		});
