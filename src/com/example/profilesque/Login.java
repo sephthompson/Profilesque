@@ -71,12 +71,24 @@ public class Login extends Activity {
 					// So updating the main thread outside the new thread
 
 					textViewError.setText(resp);
+					
+					// DEBUG OUTPUT TO TEXTVIEWERROR
+					
+					/* if ((resp != null) && resp.equals("200")) {
+						textViewError.setText("SUCCESS");
+					} else if (resp == null || resp.equals("")) {
+						textViewError.setText("RESPONSE WAS NULL");
+					} else
+						textViewError.setText(resp); */
 
+					
+					
 					if (null != errorMsg && !errorMsg.isEmpty()) {
 						textViewError.setText(errorMsg);
 					}
 				} catch (Exception e) {
 					textViewError.setText(e.getMessage());
+					//textViewError.setText("AN ERROR HAS OCCURRED");
 				}
 			}
 		});
