@@ -39,9 +39,6 @@ public class Login extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				Toast.makeText(Login.this, "Button press recognized.",
-						Toast.LENGTH_SHORT).show();
-
 				new Thread(new Runnable() {
 					public void run() {
 
@@ -59,7 +56,7 @@ public class Login extends Activity {
 
 						} catch (Exception e) {
 							Log.d("Exception", e.toString());
-							Toast.makeText(Login.this, "DEBUG: " + e, Toast.LENGTH_SHORT).show();
+							textViewError.setText(e.toString());
 						}
 					}
 				}).start();
@@ -67,28 +64,28 @@ public class Login extends Activity {
 				try {
 					// Wait a second to get response from server
 					Thread.sleep(1000);
+					
 					// Inside the new thread we cannot update the main thread
 					// So updating the main thread outside the new thread
 
-					textViewError.setText(resp);
+					// textViewError.setText("RESPONSE FROM SERVLET: " + resp);
+					resp.toString();
 					
-					// DEBUG OUTPUT TO TEXTVIEWERROR
-					
-					/* if ((resp != null) && resp.equals("200")) {
-						textViewError.setText("SUCCESS");
-					} else if (resp == null || resp.equals("")) {
-						textViewError.setText("RESPONSE WAS NULL");
-					} else
-						textViewError.setText(resp); */
+					// DEBUG OUTPUT
+					if (resp.equals("success")) {
+						textViewError.setText("SUCCESS!");
+					} else if (resp.equals("failure")) {
+						textViewError.setText("FAILURE!");
+					} else {
+						textViewError.setText("NO SCENARIO MATCH: " + resp);
+					}
 
-					
-					
+					// ERROR OUTPUT
 					if (null != errorMsg && !errorMsg.isEmpty()) {
-						textViewError.setText(errorMsg);
+						textViewError.setText("ERRORMSG: " + errorMsg);
 					}
 				} catch (Exception e) {
-					textViewError.setText(e.getMessage());
-					//textViewError.setText("AN ERROR HAS OCCURRED");
+					textViewError.setText("EXCEPTION: " + e.getMessage());
 				}
 			}
 		});
