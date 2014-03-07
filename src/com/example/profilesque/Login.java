@@ -56,7 +56,7 @@ public class Login extends Activity {
 
 						} catch (Exception e) {
 							Log.d("Exception", e.toString());
-							textViewError.setText(e.toString());
+							textViewError.setText("HTTPCLIENTEXCEPTION: " + e.toString());
 						}
 					}
 				}).start();
@@ -69,17 +69,27 @@ public class Login extends Activity {
 					// So updating the main thread outside the new thread
 
 					// textViewError.setText("RESPONSE FROM SERVLET: " + resp);
-					resp.toString();
+					String something = resp.toString();
 					
+					/*
+					// DEBUG THE DEBUG OUTPUT
+					if (resp.equals(something)) {
+						textViewError.setText("resp: [" + resp + "] is equal to something: [" + something + "]!");
+					} else {
+						textViewError.setText("resp and something are NOT EQUAL!");
+					}
+					*/
+
 					// DEBUG OUTPUT
-					if (resp.equals("success")) {
+					if (resp.equals("success\n")) {
 						textViewError.setText("SUCCESS!");
-					} else if (resp.equals("failure")) {
+					} else if (resp.equals("failure\n")) {
 						textViewError.setText("FAILURE!");
 					} else {
 						textViewError.setText("NO SCENARIO MATCH: " + resp);
 					}
 
+					
 					// ERROR OUTPUT
 					if (null != errorMsg && !errorMsg.isEmpty()) {
 						textViewError.setText("ERRORMSG: " + errorMsg);
