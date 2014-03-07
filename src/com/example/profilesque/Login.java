@@ -80,7 +80,6 @@ public class Login extends Activity {
 						textViewError.setText("RESPONSE WAS NULL");
 					} else
 						textViewError.setText(resp); */
-
 					
 					
 					if (null != errorMsg && !errorMsg.isEmpty()) {
