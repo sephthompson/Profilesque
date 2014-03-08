@@ -10,5 +10,9 @@
     <string name="edittext1">enter username</string>
     <string name="edittext2">enter password</string>
     <string name="button1">Submit</string>
+    <string name="dialog_loginfail">Your credentials are incorrect!  Please try again!</string>
+    <string name="dialog_ok">OK</string>
+    <string name="profile_placeholder">Profile Placeholder</string>
+    <string name="register_placeholder">Register Placeholder</string>
 
 </resources>

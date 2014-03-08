@@ -9,6 +9,9 @@ import com.example.profilesque.R;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
@@ -38,6 +41,8 @@ public class Login extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				
+				Toast.makeText(Login.this, "DEBUG: Button pressed!", Toast.LENGTH_SHORT).show();
 
 				new Thread(new Runnable() {
 					public void run() {
@@ -63,32 +68,40 @@ public class Login extends Activity {
 
 				try {
 					// Wait a second to get response from server
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 					
-					// Inside the new thread we cannot update the main thread
-					// So updating the main thread outside the new thread
+					/* 
+					 * Inside the new thread we cannot update the main thread
+					 * So updating the main thread outside the new thread
+					 */
 
-					// textViewError.setText("RESPONSE FROM SERVLET: " + resp);
-					String something = resp.toString();
-					
-					/*
-					// DEBUG THE DEBUG OUTPUT
-					if (resp.equals(something)) {
-						textViewError.setText("resp: [" + resp + "] is equal to something: [" + something + "]!");
-					} else {
-						textViewError.setText("resp and something are NOT EQUAL!");
-					}
-					*/
+					resp = resp.replace("\n", "");
 
 					// DEBUG OUTPUT
-					if (resp.equals("success\n")) {
+					if (resp.equals("success")) {
 						textViewError.setText("SUCCESS!");
-					} else if (resp.equals("failure\n")) {
+						
+						// START PROFILE ACTIVITY
+						Intent intent = new Intent(Login.this, Profile.class);
+						startActivity(intent);
+						// END PROFILE ACTIVITY
+						
+					} else if (resp.equals("failure")) {
 						textViewError.setText("FAILURE!");
+						
+						// START LOGIN FAILURE DIALOG
+						new AlertDialog.Builder(Login.this)
+				        .setIcon(android.R.drawable.ic_dialog_alert)
+				        .setTitle("Login failed!")
+				        .setMessage("Your login credentials could not be verified.  Please try again.")
+					    .setNeutralButton("OK", null)
+					    .show();
+						// END LOGIN FAILURE DIALOG (this will need to be in its own class later)
+						
+						
 					} else {
 						textViewError.setText("NO SCENARIO MATCH: " + resp);
 					}
-
 					
 					// ERROR OUTPUT
 					if (null != errorMsg && !errorMsg.isEmpty()) {
