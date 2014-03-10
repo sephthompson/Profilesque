@@ -14,7 +14,7 @@
     <string name="dialog_ok">OK</string>
     <string name="profile_placeholder">Profile Placeholder</string>
     <string name="register_placeholder">Register Placeholder</string>
-    <string name="reg_email">Enter a valid email address..</string>
+    <string name="reg_email">Enter a valid email..</string>
     <string name="reg_password">Create a password..</string>
     <string name="reg_firstname">Enter your first name..</string>
     <string name="reg_lastname">Enter your last name..</string>

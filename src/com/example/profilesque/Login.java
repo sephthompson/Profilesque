@@ -54,7 +54,7 @@ public class Login extends Activity {
 
 						try {
 							response = SimpleHttpClient
-									.executeHttpPost("http://calm-shore-springmvc-hibernate.herokuapp.com/MobileLogin", postParameters);
+									.executeHttpPost("http://calm-shore-springmvc-hibernate.herokuapp.com/mobilelogin", postParameters);
 							String res = response.toString();
 							resp = res;//.replaceAll("\\s+", "");
 
