@@ -21,57 +21,60 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
-        android:text="@string/button1"
-        android:background="@drawable/textfieldbg" />
+        android:text="@string/button1" />
 
     <EditText
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
+        android:gravity="center"
         android:ems="10"
         android:hint="@string/reg_email"
         android:inputType="textEmailAddress"
-        android:background="@drawable/textfieldbg" />
+        android:background="@drawable/edittextcorners" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_below="@+id/editText1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
+        android:gravity="center"
         android:ems="10"
         android:hint="@string/reg_password"
         android:inputType="textPassword"
-        android:background="@drawable/textfieldbg" />
+        android:background="@drawable/edittextcorners" />
 
     <EditText
         android:id="@+id/editText3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_alignLeft="@+id/editText1"
         android:layout_below="@+id/editText2"
         android:layout_marginTop="15dp"
+        android:gravity="center"
         android:ems="10"
         android:hint="@string/reg_firstname"
         android:inputType="textPersonName"
-        android:background="@drawable/textfieldbg" />
+        android:background="@drawable/edittextcorners" />
 
     <EditText
         android:id="@+id/editText4"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_alignLeft="@+id/editText3"
         android:layout_below="@+id/editText3"
         android:layout_centerVertical="true"
         android:layout_marginTop="15dp"
+        android:gravity="center"
         android:ems="10"
         android:hint="@string/reg_lastname"
         android:inputType="textPersonName"
-        android:background="@drawable/textfieldbg" />
+        android:background="@drawable/edittextcorners" />
 
     <TextView
         android:id="@+id/textView2"

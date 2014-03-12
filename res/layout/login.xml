@@ -25,7 +25,7 @@
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@drawable/textfieldbg"
+        android:background="@drawable/edittextcorners"
         android:ems="10"
         android:hint="@string/edittext1" >
 
@@ -40,7 +40,7 @@
         android:layout_below="@+id/editText1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@drawable/textfieldbg"
+        android:background="@drawable/edittextcorners"
         android:ems="10"
         android:hint="@string/edittext2"
         android:inputType="textPassword" />
