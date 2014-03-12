@@ -18,5 +18,9 @@
     <string name="reg_password">Create a password..</string>
     <string name="reg_firstname">Enter your first name..</string>
     <string name="reg_lastname">Enter your last name..</string>
+    <string name="profile_email">Email:</string>
+    <string name="profile_firstn">First Name:</string>
+    <string name="profile_lastn">Last Name:</string>
+    <string name="profile_about">About:</string>
 
 </resources>
