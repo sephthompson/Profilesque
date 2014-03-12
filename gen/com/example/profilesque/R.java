@@ -167,15 +167,19 @@ public final class R {
         public static final int textfieldbg=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f090008;
+        public static final int action_settings=0x7f09000c;
         public static final int button1=0x7f090002;
         public static final int button2=0x7f090001;
         public static final int editText1=0x7f090004;
         public static final int editText2=0x7f090005;
-        public static final int editText3=0x7f090006;
-        public static final int editText4=0x7f090007;
+        public static final int editText3=0x7f09000a;
+        public static final int editText4=0x7f09000b;
         public static final int textView1=0x7f090000;
         public static final int textView2=0x7f090003;
+        public static final int textView3=0x7f090006;
+        public static final int textView4=0x7f090008;
+        public static final int textView5=0x7f090007;
+        public static final int textView6=0x7f090009;
     }
     public static final class layout {
         public static final int fragment_dialog_login=0x7f030000;
@@ -197,6 +201,10 @@ public final class R {
         public static final int edittext2=0x7f060007;
         public static final int login=0x7f060005;
         public static final int notmember=0x7f060002;
+        public static final int profile_about=0x7f060014;
+        public static final int profile_email=0x7f060011;
+        public static final int profile_firstn=0x7f060012;
+        public static final int profile_lastn=0x7f060013;
         public static final int profile_placeholder=0x7f06000b;
         public static final int reg_email=0x7f06000d;
         public static final int reg_firstname=0x7f06000f;

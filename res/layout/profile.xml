@@ -8,9 +8,64 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="42dp"
+        android:text="@string/profile_firstn"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
         android:layout_centerVertical="true"
-        android:text="@string/profile_placeholder"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="@string/profile_about"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="65dp"
+        android:text="@string/profile_lastn"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_above="@+id/textView3"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_marginBottom="26dp"
+        android:text="Placeholder for Last Name"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:background="@drawable/textfieldbg" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="18dp"
+        android:text="Placeholder for About"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:background="@drawable/textfieldbg" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/textfieldbg"
+        android:text="Placeholder for First Name"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
