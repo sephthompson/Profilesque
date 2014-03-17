@@ -52,7 +52,6 @@
         android:layout_alignLeft="@+id/textView5"
         android:layout_below="@+id/textView3"
         android:layout_marginTop="18dp"
-        android:text="Placeholder for About"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:background="@drawable/textfieldbg" />
 

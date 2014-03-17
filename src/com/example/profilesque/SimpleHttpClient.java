@@ -8,17 +8,22 @@ import java.util.ArrayList;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.protocol.ClientContext;
 import org.apache.http.conn.params.ConnManagerParams;
+import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
 
 public class SimpleHttpClient {
- /** The time it takes for our client to timeout */
+	/** The time it takes for our client to timeout */
     public static final int HTTP_TIMEOUT = 30 * 1000; // milliseconds
 
     /** Single instance of our HttpClient */
@@ -32,6 +37,13 @@ public class SimpleHttpClient {
     private static HttpClient getHttpClient() {
         if (mHttpClient == null) {
             mHttpClient = new DefaultHttpClient();
+            
+            
+            // Create cookieStore
+            CookieStore cookieStore = new BasicCookieStore();
+            HttpContext httpContext = new BasicHttpContext();
+            httpContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+            
             final HttpParams params = mHttpClient.getParams();
             HttpConnectionParams.setConnectionTimeout(params, HTTP_TIMEOUT);
             HttpConnectionParams.setSoTimeout(params, HTTP_TIMEOUT);
