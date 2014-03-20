@@ -24,7 +24,7 @@ import org.apache.http.protocol.HttpContext;
 
 public class SimpleHttpClient {
 	/** The time it takes for our client to timeout */
-    public static final int HTTP_TIMEOUT = 30 * 1000; // milliseconds
+    public static final int HTTP_TIMEOUT = 30 * 1000; // milliseconds (timeout in 30 seconds)
 
     /** Single instance of our HttpClient */
     private static HttpClient mHttpClient;
@@ -37,13 +37,6 @@ public class SimpleHttpClient {
     private static HttpClient getHttpClient() {
         if (mHttpClient == null) {
             mHttpClient = new DefaultHttpClient();
-            
-            
-            // Create cookieStore
-            CookieStore cookieStore = new BasicCookieStore();
-            HttpContext httpContext = new BasicHttpContext();
-            httpContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
-            
             final HttpParams params = mHttpClient.getParams();
             HttpConnectionParams.setConnectionTimeout(params, HTTP_TIMEOUT);
             HttpConnectionParams.setSoTimeout(params, HTTP_TIMEOUT);
@@ -65,10 +58,16 @@ public class SimpleHttpClient {
         BufferedReader in = null;
         try {
             HttpClient client = getHttpClient();
+            
+            // Cookie stuff that may break
+            CookieStore cookieStore = new BasicCookieStore();
+            HttpContext httpContext = new BasicHttpContext();
+            httpContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+            
             HttpPost request = new HttpPost(url);
             UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(postParameters);
             request.setEntity(formEntity);
-            HttpResponse response = client.execute(request);
+            HttpResponse response = client.execute(request, httpContext);
             in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 
             StringBuffer sb = new StringBuffer("");
@@ -103,10 +102,19 @@ public class SimpleHttpClient {
     public static String executeHttpGet(String url) throws Exception {
         BufferedReader in = null;
         try {
+        	
             HttpClient client = getHttpClient();
+            
+            // Cookie stuff that may break
+            CookieStore cookieStore = new BasicCookieStore();
+            HttpContext httpContext = new BasicHttpContext();
+            httpContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+            
+            // HttpResponse response1 = client.execute(yourMethod1, httpContext);
+            
             HttpGet request = new HttpGet();
             request.setURI(new URI(url));
-            HttpResponse response = client.execute(request);
+            HttpResponse response = client.execute(request, httpContext);
             in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 
             StringBuffer sb = new StringBuffer("");
